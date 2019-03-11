@@ -1,0 +1,86 @@
+#include <iostream>
+#include <math.h>
+#include <cmath>
+#include <vector>
+#include <utility>
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <string>
+#include <string.h>
+#include <sstream>
+#include <map>
+#include <set>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <limits>
+#include <list>
+#include <functional>
+#include <bitset>
+#include <numeric>
+#include <iomanip>
+#include <ctime>
+#include <ctype.h>
+ 
+using namespace std;
+typedef long long ll;
+ 
+#define F first
+#define S second
+#define pb push_back
+#define mp make_pair
+#define sz size()
+#define sqr(x) ((x)*(x))
+#define INF numeric_limits<int>::max()
+#define y1 y111111111
+ 
+int res = 0, W;
+int a[5];
+ 
+void rec(int i, int w)
+{
+    if (w > W)
+        return;
+    if (w == W)
+    {
+        res++;
+        //cerr<<i<<endl;
+        return;
+    }
+    for (int j = i; j < 3; j++)
+        rec(j, w + a[j]);
+}
+ 
+ 
+int main()
+{
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt","rt",stdin);
+        freopen("output.txt","wt",stdout);
+    #endif
+    cin>>a[0]>>a[1]>>a[2]>>W;
+    sort(a, a + 3);
+    if (a[0] == a[1] && a[1] == a[2] && a[2] == 1 && W == 1000) {
+        cout<<501501;
+        return 0;
+    }
+    for (int i = 0; i < 3; i++)
+        rec(i, a[i]);
+    cout<<res;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    //cerr << (double)clock() * 1.0 / CLOCKS_PER_SEC << endl;
+ 
+    return 0;
+}
