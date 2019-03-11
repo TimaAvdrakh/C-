@@ -1,0 +1,75 @@
+#include <iostream>
+#include <math.h>
+#include <cmath>
+#include <vector>
+#include <utility>
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <string>
+#include <string.h>
+#include <sstream>
+#include <map>
+#include <set>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <limits>
+#include <list>
+#include <functional>
+#include <bitset>
+#include <numeric>
+#include <iomanip>
+#include <ctime>
+   
+using namespace std;
+typedef long long ll;
+   
+#define F first
+#define S second
+#define pb push_back
+#define mp make_pair
+#define sz size()
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define ROF(i, a, b) for(int i=a-1; i>=b; i--)
+#define INF numeric_limits<int>::max()
+#define y1 y1111111
+#define PI 3.14159265359
+#define RAD 57.2957795
+  
+int n;
+vector<int> res; 
+ 
+void show()
+{
+    for (int i=0; i<res.sz-1; i++)
+    printf("%d+",res[i]);
+    printf("%d\n",res[res.sz-1]);
+}
+ 
+void rec(int x,int sum)
+{
+    //cout<<x<<' '<<sum<<endl;
+    if (sum==0) { show(); return; }
+    if (sum<0) return;
+     
+    for (int i=x; i<n; i++)
+    {
+        res.pb(i);
+        rec(i,sum-i);
+        res.pop_back();
+    }
+}
+  
+int main()
+{
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt","rt",stdin);
+        freopen("output.txt","wt",stdout);
+    #endif
+    scanf("%d",&n);
+    rec(1,n);
+ 
+    return 0;
+}
